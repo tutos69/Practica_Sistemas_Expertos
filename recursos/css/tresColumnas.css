@@ -1,0 +1,52 @@
+*{
+    box-sizing: border-box;
+}
+section{
+  
+    float: left;
+    width: 33%;
+    margin: 0.1%;
+    border-radius: 70px 70px 70px 70px;
+    height: auto;
+    padding-bottom: 50px;
+}
+
+#izq h1{
+    
+   background-color: #718EFF;
+}
+
+#cen h1{
+
+    background-color: #23FDCA;
+}
+
+#der h1{
+
+    background-color: #9757FF;
+
+}
+h1{color: black;
+    margin: 0.1%;
+    
+    border-radius: 70px 70px 70px 70px;
+    height: auto;
+    padding-bottom: 30px;
+    padding-top: 30px;
+    }
+
+p{
+    color: black;
+    text-align: justify ;
+    padding: 15px;
+}
+
+.tresColumnas{
+    border-radius: 10px;
+    display: block;
+    margin: auto;
+    max-width: 480px;
+    min-width: 300px;
+    max-height: 800px;
+    min-height: 300px;
+}

@@ -1,0 +1,40 @@
+*{
+    box-sizing: border-box;
+}
+section{
+  
+    float: left;
+    width: 48%;
+    margin: 0.15%;
+    border-radius: 70px 70px 70px 70px;
+    padding-bottom: 50px;
+}
+
+table,th,td{
+    border: 1px solid black;
+    border-collapse: separate;
+    border-radius: 15px;
+}
+
+th,th,td{
+    padding: 10px;
+}
+
+th{
+    background-color: #6AB0FF;
+}
+
+.hora{
+    background-color: #FEBE00;
+}
+
+.lleno{
+    background-color: #FC0D79;
+}
+
+.llenoDos{
+    background-color: #E64F00;
+}
+.llenoTres{
+    background-color: #5E00E6;
+}

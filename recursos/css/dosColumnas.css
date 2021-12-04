@@ -1,0 +1,45 @@
+*{
+    box-sizing: border-box;
+}
+
+
+.sub-menu{
+    list-style: none; /*quitamos el circulo de la lista*/
+    display: block;
+    padding: 10px 10px 10px 20px;
+}
+
+section{
+  
+    float: left;
+    width: 20%;
+    padding-left: 1%;
+    
+}
+#escrito{
+    width: 80%;
+    padding: 1% 10%;
+}
+p{
+    text-align: justify ;
+}
+
+h2,h3,p {
+    color: black;
+}
+
+.imagen7 {
+    max-width: 100%;
+    min-width: 80%;
+    max-height: 30%;
+    min-height: 20%;
+}
+
+#tepes{
+    text-align: center;
+    font-size: 50px;
+}
+
+#subindice{
+    text-align: center;
+}

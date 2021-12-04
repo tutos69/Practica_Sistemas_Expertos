@@ -1,0 +1,41 @@
+*{
+    box-sizing: border-box;
+}
+
+
+.sub-menu{
+    list-style: none; /*quitamos el circulo de la lista*/
+    display: block;
+    padding: 10px 10px 10px 20px;
+}
+
+section{
+  
+    float: left;
+    width: 50%;
+    padding-left: 1%;
+    
+}
+
+p{
+    text-align: justify ;
+}
+
+h2,h3,p {
+    color: black;
+}
+
+.imgD{
+    border-radius: 10px;
+    display: block;
+    margin: auto;
+    max-width: 700px;
+    min-width: 400px;
+    max-height: 800px;
+    min-height: 300px;
+}
+
+
+
+
+
