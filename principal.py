@@ -1,10 +1,13 @@
 
 
-
+import traceback
+import clips
 from flask import Flask, render_template
 
 
 app = Flask(__name__)
+env = clips.Environment()
+
 @app.route('/')
 def indice():
     return render_template('Index.html')
@@ -41,7 +44,10 @@ def conocemos():
 
 @app.route('/contacto')
 def contacto():
-    return render_template('formulario.html')    
-
-
+    try:
+        env.load('BaseConocimiento.clp')
+        return render_template('formulario.html') 
+    except Exception:    
+        traceback.print_exc()
+        #return render_template('formulario.html')     
 app.run(debug=True, port=8000)
