@@ -2,14 +2,14 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <link rel="Stylesheet" href="../static/css/base.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="Stylesheet" href="../static/css/base.css">
+    <link rel="Stylesheet" href="../static/css/formulario.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     </head>
     <body>
-        <header> 
-            <img src="../static/imagenes/LogoUniversidad.png" alt="Logo Universidad"> 
-            
+        <header >
+            <img src="../static/imagenes/LogoUniversidad.png" alt="Logo Universidad">
         </header>
         <nav >
             <ul class="menu">
@@ -42,22 +42,25 @@
                 </li>     
                 <li>
                     <a href="/prueba">Prueba</a> 
-                </li>      
+                </li>  
+                <li>
+                    <a href="/estudiantes">Estudiantes</a> 
+                </li>    
         </ul>
         </nav>
         <section>
-            <article >
-            </article>
-            <aside>
-            </aside>
-        </section>
-        <section>
-            <article>
-            </article>
-            <aside>
-            </aside>
+            <form method="POST" action="/estudiantes">
+            <label> Ingrese los datos del Estudiante para crearlo </label> 
+           <input class="texto" type="text" name="nombres" id= "nombres" placeholder="Ingresa sus nombres">    
+           <input class="texto" type="text" name="apellidos" id= "apellidos" placeholder="Ingresa sus apellidos">    
+           <input  class="texto"type="email" name="correo" id= "correo" placeholder="Ingrese su correo">   
+           <input class="boton" type="submit" name="submit" id= "submit" placeholder="Enviar">   
+        </form>
+        <p> {{contador}}</p>
         </section>
 
+        
+           
         <footer>
             <p>Miguel Angel Samaniego Calle</p>
             <p><a href="mailto:msamaniegoc1@est.ups.edu.ec">msamaniegoc1@est.ups.edu.ec</a></p>

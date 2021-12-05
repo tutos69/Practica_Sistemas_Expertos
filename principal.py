@@ -1,10 +1,17 @@
 
-
-
-from flask import Flask, render_template
+from types import MethodType
+from flask.templating import Environment
+from flask.wrappers import Request
+import clips
+from clips import Environment
+import traceback
+from flask import Flask, render_template, request
 
 
 app = Flask(__name__)
+envi=clips.Environment()
+
+dato=0
 @app.route('/')
 def indice():
     return render_template('Index.html')
@@ -44,4 +51,26 @@ def contacto():
     return render_template('formulario.html')    
 
 
+@app.route('/prueba')
+def prueba():
+    return render_template('prueba.html')  
+
+@app.route('/estudiantes', methods=['GET','POST'])
+def Estudiantes():
+    #m=dato
+    try:
+        
+        envi.load('baseConocimiento.clp')
+       #if Request.method=='POST':
+        #     return render_template('Estudiantes.html', contador='<h1>hola</h1>') 
+       # else:     
+        return render_template('Estudiantes.html', contador=0)  
+        
+    except Exception:
+        traceback.print_exc()
+
+
+    # return render_template('Estudiantes.html')      
+
 app.run(debug=True, port=8000)
+#comentarios
