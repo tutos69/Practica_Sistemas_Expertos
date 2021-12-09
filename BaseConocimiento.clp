@@ -100,3 +100,6 @@
 		(cardinality 1 2)
 	)
 )
+
+
+;(load-instances "C:/Users/Adrian/Documents/UPS/Ciclo_06/Sistemas Expertos/inte/Estudiantes.clp")
