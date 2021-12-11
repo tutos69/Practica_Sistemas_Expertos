@@ -188,12 +188,141 @@
 		(= ?cmn ?cm)
 	)
 =>
-	(if (< 70 ?nn) then
+	(if (< ?nn 70) then
 		(printout t "Te Recomendamos asistir a tutorias de verano " crlf)
 	else
 		(assert (NotasMay70 (codigo ?cn) (materia ?cmn) (Nota ?nn) (codEstud ?cne) (codprofe ?cnp)))
 	)
 )
+
+
+;Template Regla 3
+
+(deftemplate NotasIgua70 
+	(slot codigo
+		(type INTEGER)
+		(range 0 100000)
+		(default 0)
+	)
+	(slot codEstud
+		(type INTEGER)
+		(range 0 100000)
+		(default 0)
+	)
+	(slot codprofe
+		(type INTEGER)
+		(range 0 100000)
+		(default 0)
+	)
+	(slot materia
+		(type INTEGER)
+		(range 0 100000)
+		(default 0)
+	)
+	(slot codCarrera
+		(type INTEGER)
+		(range 0 100000)
+		(default 0)
+	)
+	(slot Nota
+		(type INTEGER)
+		(range 0 101)
+		(default 0)
+	)
+)
+;Regla 3
+(defrule NotIgua70
+	(NotasMay70 (codigo ?cn) (materia ?cmn) (Nota ?nn) (codEstud ?cne) (codprofe ?cnp))
+=>
+	(if (= ?nn 70 ) then
+		(assert (NotasIgua70 (codigo ?cn) (materia ?cmn) (Nota ?nn) (codEstud ?cne) (codprofe ?cnp)))
+	else
+		(printout t "Te Recomendamos asistir a tutorias de verano " crlf)
+	)
+)
+
+;Template Regla 4
+
+(deftemplate NotasMay85 
+	(slot codigo
+		(type INTEGER)
+		(range 0 100000)
+		(default 0)
+	)
+	(slot codEstud
+		(type INTEGER)
+		(range 0 100000)
+		(default 0)
+	)
+	(slot codprofe
+		(type INTEGER)
+		(range 0 100000)
+		(default 0)
+	)
+	(slot materia
+		(type INTEGER)
+		(range 0 100000)
+		(default 0)
+	)
+	(slot codCarrera
+		(type INTEGER)
+		(range 0 100000)
+		(default 0)
+	)
+	(slot Nota
+		(type INTEGER)
+		(range 0 101)
+		(default 0)
+	)
+)
+
+(deftemplate RecoPro 
+	(slot codigo
+		(type INTEGER)
+		(range 0 100000)
+		(default 0)
+	)
+	(slot codEstud
+		(type INTEGER)
+		(range 0 100000)
+		(default 0)
+	)
+	(slot codprofe
+		(type INTEGER)
+		(range 0 100000)
+		(default 0)
+	)
+	(slot materia
+		(type INTEGER)
+		(range 0 100000)
+		(default 0)
+	)
+	(slot codCarrera
+		(type INTEGER)
+		(range 0 100000)
+		(default 0)
+	)
+	(slot Nota
+		(type INTEGER)
+		(range 0 101)
+		(default 0)
+	)
+)
+
+
+;Regla 4
+
+(defrule NotMay85
+	(NotasMay70 (codigo ?cn) (materia ?cmn) (Nota ?nn) (codEstud ?cne) (codprofe ?cnp))
+=>
+	(if (> ?nn 85 ) then
+		(assert (NotasMay85 (codigo ?cn) (materia ?cmn) (Nota ?nn) (codEstud ?cne) (codprofe ?cnp)))
+	else
+		(assert (RecoPro (codigo ?cn) (materia ?cmn) (Nota ?nn) (codEstud ?cne) (codprofe ?cnp)))
+	)
+)
+
+;Regla 5
 
 
 
