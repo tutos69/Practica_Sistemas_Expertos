@@ -1,4 +1,4 @@
-(defclass materia (is-a USER)
+(deftemplate materia 
 	(slot codigo
 		(type INTEGER)
 		(range 0 100000)
@@ -7,7 +7,6 @@
 	(multislot nombre
 		(type STRING)
 		(default ?DERIVE)
-		(cardinality 1 2)
 	)
 	(slot tutoria
 		(type INTEGER)
@@ -16,7 +15,7 @@
 	)
 )
 
-(defclass Persona (is-a USER)
+(deftemplate estudiante 
 	(slot codigo
 		(type INTEGER)
 		(range 0 100000)
@@ -31,15 +30,11 @@
 		(default ?DERIVE)
 		(cardinality 1 2)
 	)
-	(multislot Apellido
+	(multislot apellido
 		(type STRING)
 		(default ?DERIVE)
 		(cardinality 1 2)
 	)
-)
-
-
-(defclass Estudiante (is-a Persona)
 	(slot ciclo
 		(type INTEGER)
 		(range 0 10)
@@ -47,15 +42,34 @@
 	)
 )
 
-(defclass Profesor (is-a Persona)
-	(slot Sueldo
+(deftemplate profesor 
+	(slot codigo
 		(type INTEGER)
-		(range 0 10)
-		(default 0)	
+		(range 0 100000)
+		(default 0)
+	)
+	(slot cedula
+		(type STRING)
+		(default ?DERIVE)
+	)
+	(multislot nombre
+		(type STRING)
+		(default ?DERIVE)
+		(cardinality 1 2)
+	)
+	(multislot apellido
+		(type STRING)
+		(default ?DERIVE)
+		(cardinality 1 2)
+	)
+	(slot sueldo
+		(type FLOAT)
+		(default 0.0)
+		(range 0.0 10000000.0)
 	)
 )
 
-(defclass notas (is-a USER)
+(deftemplate notas 
 	(slot codigo
 		(type INTEGER)
 		(range 0 100000)
@@ -72,8 +86,9 @@
 		(default 0)
 	)
 	(slot materia
-		(type STRING)
-		(default ?DERIVE)
+		(type INTEGER)
+		(range 0 100000)
+		(default 0)
 	)
 	(slot codCarrera
 		(type INTEGER)
@@ -82,13 +97,14 @@
 	)
 	(slot Nota
 		(type INTEGER)
-		(range 0 100)
+		(range 0 101)
 		(default 0)
 	)
 
 )
 
-(defclass Carrera(is-a USER)
+
+(deftemplate carrera
 	(slot codigo
 		(type INTEGER)
 		(range 0 100000)
@@ -100,6 +116,3 @@
 		(cardinality 1 2)
 	)
 )
-
-
-;(load-instances "C:/Users/Adrian/Documents/UPS/Ciclo_06/Sistemas Expertos/inte/Estudiantes.clp")

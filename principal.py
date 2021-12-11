@@ -1,5 +1,6 @@
 
 
+from re import template
 import traceback
 import clips, os
 from clips.classes import Classes, Instance, instance_pp_string
@@ -51,13 +52,11 @@ def conocemos():
 def contacto():
     try:
         env.load('BaseConocimiento.clp') 
-        env._classes.load_instances('Estudiante.clp')
-        env.reset
-        env.run() 
-        listInstancias = env._classes.instances()
-        print(listInstancias[''])
-       
+        env._facts.load_facts('Estudiante.clp')
+       # templates = env.find_tamplate('estudiante')
 
+        for c in env._facts.facts():
+            print(c)
         if request.method == 'GET':
             #return render_template('formulario.html')
             #POST form
@@ -73,8 +72,7 @@ def contacto():
            
                 
             return render_template('formulario.html', resultadoCarga ='Exitoso', estado =True) 
-        return render_template('formulario.html', resultadoCarga ='Exitoso', estado =True) 
-        #return render_template('formulario.html')   
+        return render_template('formulario.html', resultadoCarga ='Exitoso', estado =True)  
     except Exception:    
         traceback.print_exc()
         #return render_template('formulario.html')    
