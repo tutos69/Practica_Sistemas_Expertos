@@ -4,7 +4,7 @@
 <link rel="Stylesheet" href="../static/css/base.css">
 <link rel="Stylesheet" href="../static/css/formulario.css">
 <section>
-    <form method="POST" action='/prueba' estado = true>
+    <form method="POST" action='/prueba' estado=true>
         <label> Ingrese los datos del Estudiante para crearlo </label>
         <input class="texto" type="text" name="cedula" id="cedula" placeholder="Ingresa su cedula">
         <label>Ingresa tus Nombre</label>
@@ -45,6 +45,32 @@
         </select>
         <label>Te gusta dar clases?</label>
         <select name="DarClase" id="DarClase">
+            <option value="0">NO</option>
+            <option value="1">SI</option>
+        </select>
+        <label>Porque quiere ser tutor?</label>
+        <select name="quiereTutor" id="quiereTutor">
+            <option value="1">Porque lo necesito para mi carpeta</option>
+            <option value="2">Me interesa su grupo de ayudantia</option>
+            <option value="3">No tengo que hacer</option>
+        </select>
+        <label>Has ensenado Alguna vez?</label>
+        <select name="hasEnse" id="hasEnse">
+            <option value="0">NO</option>
+            <option value="1">SI</option>
+        </select>
+        <label>Es tutor en otra materia?</label>
+        <select name="esTuror" id="esTuror">
+            <option value="0">NO</option>
+            <option value="1">SI</option>
+        </select>
+        <label>Participarias en cursos de capacitacion?</label>
+        <select name="participar" id="participar">
+            <option value="0">NO</option>
+            <option value="1">SI</option>
+        </select>
+        <label>Necesitas Ayuda?</label>
+        <select name="ayuda" id="ayuda">
             <option value="0">NO</option>
             <option value="1">SI</option>
         </select>

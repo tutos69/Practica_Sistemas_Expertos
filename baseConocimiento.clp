@@ -257,71 +257,6 @@
 	)
 )
 
-(deftemplate NotasMay85 
-	(slot cedulas
-		(type STRING)
-		(default ?DERIVE)
-	)
-	(slot Nota
-		(type INTEGER)
-		(range 0 101)
-		(default 0)
-	)
-	(slot recomeprofe
-		(type INTEGER)
-		(range 0 1)
-		(default 0)
-	)
-	(slot recomeAnima
-		(type INTEGER)
-		(range 0 1)
-		(default 0)
-	)
-	(slot recomeDirec
-		(type INTEGER)
-		(range 0 1)
-		(default 0)
-	)
-	(slot darClase
-		(type INTEGER)
-		(range 0 1)
-		(default 0)
-	)
-)
-
-
-
-(deftemplate RecoPro 
-	(slot cedulas
-		(type STRING)
-		(default ?DERIVE)
-	)
-	(slot Nota
-		(type INTEGER)
-		(range 0 101)
-		(default 0)
-	)
-	(slot recomeprofe
-		(type INTEGER)
-		(range 0 1)
-		(default 0)
-	)
-	(slot recomeAnima
-		(type INTEGER)
-		(range 0 1)
-		(default 0)
-	)
-	(slot recomeDirec
-		(type INTEGER)
-		(range 0 1)
-		(default 0)
-	)
-	(slot darClase
-		(type INTEGER)
-		(range 0 1)
-		(default 0)
-	)
-)
 
 
 (deftemplate noExisteEstudiante
@@ -377,6 +312,38 @@
 )
 
 
+(deftemplate gustaTutoria
+	(slot cedulas
+		(type STRING)
+		(default ?DERIVE)
+	)
+	(slot Nota
+		(type INTEGER)
+		(range 0 101)
+		(default 0)
+	)
+	(slot recomeprofe
+		(type INTEGER)
+		(range 0 1)
+		(default 0)
+	)
+	(slot recomeAnima
+		(type INTEGER)
+		(range 0 1)
+		(default 0)
+	)
+	(slot recomeDirec
+		(type INTEGER)
+		(range 0 1)
+		(default 0)
+	)
+	(slot darClase
+		(type INTEGER)
+		(range 0 1)
+		(default 0)
+	)
+)
+
 (defrule existetss
 	(DatosIngresados (cedulas ?cxd) (nombre ?ndi) (apellido ?adi) (materia ?mdi) (Nota ?nodi) (recomeprofe ?rpdi) (recomeAnima ?radi) (recomeDirec ?rddi) (darClase ?dcdi))
 	(estudiante (cedula ?cx) (nombre ?ne))
@@ -428,20 +395,7 @@
 	)
 )
 
-
-
-(defrule NotMay85
-	(NotasMay70 (cedulas ?cxd) (Nota ?nodi) (recomeprofe ?rpdi) (recomeAnima ?radi) (recomeDirec ?rddi) (darClase ?dcdi) )
-=>
-	(if (> ?nodi 85 ) then
-		(assert (NotasMay85 (cedulas ?cxd) (Nota ?nodi) (recomeprofe ?rpdi) (recomeAnima ?radi) (recomeDirec ?rddi) (darClase ?dcdi)))
-	else
-		(assert (RecoPro (cedulas ?cxd) (Nota ?nodi) (recomeprofe ?rpdi) (recomeAnima ?radi) (recomeDirec ?rddi) (darClase ?dcdi)))
-	)
-)
-
-
-(deftemplate gustaTutoria
+(deftemplate RecoPro 
 	(slot cedulas
 		(type STRING)
 		(default ?DERIVE)
@@ -473,7 +427,18 @@
 	)
 )
 
-(deftemplate RecoAnima
+
+(defrule NotMay85
+	(NotasMay70 (cedulas ?cxd) (Nota ?nodi) (recomeprofe ?rpdi) (recomeAnima ?radi) (recomeDirec ?rddi) (darClase ?dcdi) )
+=>
+	(if (> ?nodi 85 ) then
+		(assert (gustaTutoria (cedulas ?cxd) (Nota ?nodi) (recomeprofe ?rpdi) (recomeAnima ?radi) (recomeDirec ?rddi) (darClase ?dcdi)))
+	else
+		(assert (RecoPro (cedulas ?cxd) (Nota ?nodi) (recomeprofe ?rpdi) (recomeAnima ?radi) (recomeDirec ?rddi) (darClase ?dcdi)))
+	)
+)
+
+(deftemplate RecoAnima 
 	(slot cedulas
 		(type STRING)
 		(default ?DERIVE)
@@ -481,6 +446,11 @@
 	(slot Nota
 		(type INTEGER)
 		(range 0 101)
+		(default 0)
+	)
+	(slot recomeprofe
+		(type INTEGER)
+		(range 0 1)
 		(default 0)
 	)
 	(slot recomeAnima
@@ -498,7 +468,16 @@
 		(range 0 1)
 		(default 0)
 	)
+)
 
+(defrule RecoPro
+	(RecoPro (cedulas ?cxd) (Nota ?nodi) (recomeprofe ?rpdi) (recomeAnima ?radi) (recomeDirec ?rddi) (darClase ?dcdi))
+=>
+	(if (= 1 ?rpdi) then
+		(assert (gustaTutoria (cedulas ?cxd) (Nota ?nodi) (recomeprofe ?rpdi) (recomeAnima ?radi) (recomeDirec ?rddi) (darClase ?dcdi)))
+	else
+		(assert (RecoAnima (cedulas ?cxd) (Nota ?nodi) (recomeAnima ?radi) (recomeDirec ?rddi) (darClase ?dcdi)))
+	)  
 )
 
 (deftemplate RecoDirec
@@ -511,6 +490,16 @@
 		(range 0 101)
 		(default 0)
 	)
+	(slot recomeprofe
+		(type INTEGER)
+		(range 0 1)
+		(default 0)
+	)
+	(slot recomeAnima
+		(type INTEGER)
+		(range 0 1)
+		(default 0)
+	)
 	(slot recomeDirec
 		(type INTEGER)
 		(range 0 1)
@@ -521,35 +510,25 @@
 		(range 0 1)
 		(default 0)
 	)
-
 )
 
-(defrule RecomendacionProfeEX
+
+(defrule RecoAnima
 	(RecoPro (cedulas ?cxd) (Nota ?nodi) (recomeprofe ?rpdi) (recomeAnima ?radi) (recomeDirec ?rddi) (darClase ?dcdi))
-=>	
-	(if (= 1 ?rpdi) then
-		(assert (gustaTutoria (cedulas ?cxd) (Nota ?nodi) (recomeprofe ?rpdi) (recomeAnima ?radi) (recomeDirec ?rddi) (darClase ?dcdi) ) )
+=>
+	(if (= 1 ?radi) then
+		(assert (gustaTutoria (cedulas ?cxd) (Nota ?nodi) (recomeprofe ?rpdi) (recomeAnima ?radi) (recomeDirec ?rddi) (darClase ?dcdi)))
 	else
-		(assert (RecoAnima (cedulas ?cxd) (Nota ?nodi) (recomeAnima ?radi) (recomeDirec ?rddi) (darClase ?dcdi) ))
-	)
+		(assert (RecoDirec (cedulas ?cxd) (Nota ?nodi) (recomeprofe ?rpdi) (recomeAnima ?radi) (recomeDirec ?rddi) (darClase ?dcdi)))
+	) 
 )
 
-(defrule RecomendacionAnimaEX
-	(RecoAnima (cedulas ?cxd) (Nota ?nodi) (recomeAnima ?radi) (recomeDirec ?rddi) (darClase ?dcdi))
-=>	
-	(if (= 1 ?radi) then
-		(assert (gustaTutoria (cedulas ?cxd) (Nota ?nodi) (recomeAnima ?radi) (recomeDirec ?rddi) (darClase ?dcdi) ) )
+(defrule RecoDirec
+	(RecoDirec (cedulas ?cxd) (Nota ?nodi) (recomeprofe ?rpdi) (recomeAnima ?radi) (recomeDirec ?rddi) (darClase ?dcdi))
+=>
+	(if (= 1 ?rddi) then
+		(assert (gustaTutoria (cedulas ?cxd) (Nota ?nodi) (recomeprofe ?rpdi) (recomeAnima ?radi) (recomeDirec ?rddi) (darClase ?dcdi)))
 	else
-		(assert (RecoDirec (cedulas ?cxd) (Nota ?nodi) (recomeDirec ?rddi) (darClase ?dcdi) ))
-	)
-)
-
-(defrule RecomendacionDirecEX
-	(RecoDirec (cedulas ?cxd) (Nota ?nodi) (recomeDirec ?rddi) (darClase ?dcdi))
-=>	
-	(if (= 1 ?radi) then
-		(assert (gustaTutoria (cedulas ?cxd) (Nota ?nodi) (recomeDirec ?rddi) (darClase ?dcdi) ) )
-	else
-		(assert (RecoDirec (cedulas ?cxd) (Nota ?nodi) (recomeDirec ?rddi) (darClase ?dcdi) ))
-	)
+		(printout t "No Puedeser Tutor" crlf)
+	) 
 )
