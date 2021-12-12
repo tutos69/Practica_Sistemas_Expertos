@@ -1,89 +1,43 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <link rel="Stylesheet" href="../static/css/base.css">
-        <link rel="Stylesheet" href="../static/css/formularioRecorrido.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    </head>
-    <body>
-        <header >
-            <img src="../static/imagenes/LogoUniversidad.png" alt="Logo Universidad">
-        </header>
-        <nav >
-            <ul class="menu">
-                <li>
-                    <a href="/">Principal</a>
-                </li>
-                <li>
-                    <a href="/tutorias">Tutorias</a>
-                </li>
-                <li>
-                    <a href="/tutores">Tutores</a>
-                </li>
-                <li>
-                    <a href="/horarios">Horarios</a>
-                </li>
-                <li>
-                    <a href="/beneficios">Beneficios</a>
-                </li>
-                <li>
-                    <a href="/reglamento">Reglametos</a>
-                </li>
-                <li>
-                    <a href="/tepes">Tepes</a>
-                </li>
-                <li>
-                    <a href="/conocemos">Conocemos</a> 
-                </li>    
-                <li>
-                    <a href="/contacto">Contactanos</a> 
-                </li>        
-        </ul>
-        </nav>
-        <form id="msform">
-            <!-- progressbar -->
-            <ul id="progressbar">
-              <li class="active">Account Setup</li>
-              <li>Social Profiles</li>
-              <li>Personal Details</li>
-            </ul>
-            <!-- fieldsets -->
-            <fieldset>
-              <h2 class="fs-title">Create your account</h2>
-              <h3 class="fs-subtitle">This is step 1</h3>
-              <input type="text" name="email" placeholder="Email" />
-              <input type="password" name="pass" placeholder="Password" />
-              <input type="password" name="cpass" placeholder="Confirm Password" />
-              <input type="button" name="next" class="next action-button" value="Next" />
-            </fieldset>
-            <fieldset>
-              <h2 class="fs-title">Social Profiles</h2>
-              <h3 class="fs-subtitle">Your presence on the social network</h3>
-              <input type="text" name="twitter" placeholder="Twitter" />
-              <input type="text" name="facebook" placeholder="Facebook" />
-              <input type="text" name="gplus" placeholder="Google Plus" />
-              <input type="button" name="previous" class="previous action-button" value="Previous" />
-              <input type="button" name="next" class="next action-button" value="Next" />
-            </fieldset>
-            <fieldset>
-              <h2 class="fs-title">Personal Details</h2>
-              <h3 class="fs-subtitle">We will never sell it</h3>
-              <input type="text" name="fname" placeholder="First Name" />
-              <input type="text" name="lname" placeholder="Last Name" />
-              <input type="text" name="phone" placeholder="Phone" />
-              <textarea name="address" placeholder="Address"></textarea>
-              <input type="button" name="previous" class="previous action-button" value="Previous" />
-              <input type="submit" name="submit" class="submit action-button" value="Submit" />
-            </fieldset>
-          </form>
-          <script src="/static/JS/formulariorecorrido.js"></script>
-        <footer>
-            <p>Miguel Angel Samaniego Calle</p>
-            <p><a href="mailto:msamaniegoc1@est.ups.edu.ec">msamaniegoc1@est.ups.edu.ec</a></p>
-            <p><a href="tel:+593986832324">0986832324</a></p>
-            <p>&copy;Todos los derechos reservados</p>
-        </footer>
-    </body>
-</html>
+{% extends 'index.html'%}
+{% block content%}
+<link rel="Stylesheet" href="../static/css/base.css">
+<link rel="Stylesheet" href="../static/css/formularioRecorrido.css">
+<form id="msform">
+    <!-- progressbar -->
+    <ul id="progressbar">
+        <li class="active">Account Setup</li>
+        <li>Social Profiles</li>
+        <li>Personal Details</li>
+    </ul>
+    <!-- fieldsets -->
+    <fieldset>
+        <h2 class="fs-title">Create your account</h2>
+        <h3 class="fs-subtitle">This is step 1</h3>
+        <input type="text" name="email" placeholder="Email" />
+        <input type="password" name="pass" placeholder="Password" />
+        <input type="password" name="cpass" placeholder="Confirm Password" />
+        <input type="button" name="next" class="next action-button" value="Next" />
+    </fieldset>
+    <fieldset>
+        <h2 class="fs-title">Social Profiles</h2>
+        <h3 class="fs-subtitle">Your presence on the social network</h3>
+        <input type="text" name="twitter" placeholder="Twitter" />
+        <input type="text" name="facebook" placeholder="Facebook" />
+        <input type="text" name="gplus" placeholder="Google Plus" />
+        <input type="button" name="previous" class="previous action-button" value="Previous" />
+        <input type="button" name="next" class="next action-button" value="Next" />
+    </fieldset>
+    <fieldset>
+        <h2 class="fs-title">Personal Details</h2>
+        <h3 class="fs-subtitle">We will never sell it</h3>
+        <input type="text" name="fname" placeholder="First Name" />
+        <input type="text" name="lname" placeholder="Last Name" />
+        <input type="text" name="phone" placeholder="Phone" />
+        <textarea name="address" placeholder="Address"></textarea>
+        <input type="button" name="previous" class="previous action-button" value="Previous" />
+        <input type="submit" name="submit" class="submit action-button" value="Submit" />
+    </fieldset>
+</form>
+<script src="/static/JS/formulariorecorrido.js"></script>
+
+{% endblock content%}

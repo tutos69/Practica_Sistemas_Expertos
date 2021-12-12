@@ -1,68 +1,17 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <link rel="Stylesheet" href="../static/css/base.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    </head>
-    <body>
-        <header> 
-            <img src="../static/imagenes/LogoUniversidad.png" alt="Logo Universidad"> 
-            
-        </header>
-        <nav >
-            <ul class="menu">
-                <li>
-                    <a href="/">Principal</a>
-                </li>
-                <li>
-                    <a href="/tutorias">Tutorias</a>
-                </li>
-                <li>
-                    <a href="/tutores">Tutores</a>
-                </li>
-                <li>
-                    <a href="/horarios">Horarios</a>
-                </li>
-                <li>
-                    <a href="/beneficios">Beneficios</a>
-                </li>
-                <li>
-                    <a href="/reglamento">Reglametos</a>
-                </li>
-                <li>
-                    <a href="/tepes">Tepes</a>
-                </li>
-                <li>
-                    <a href="/conocemos">Conocemos</a> 
-                </li>    
-                <li>
-                    <a href="/contacto">Contactanos</a> 
-                </li>     
-                <li>
-                    <a href="/prueba">Prueba</a> 
-                </li>      
-        </ul>
-        </nav>
-        <section>
-            <article >
-            </article>
-            <aside>
-            </aside>
-        </section>
-        <section>
-            <article>
-            </article>
-            <aside>
-            </aside>
-        </section>
+{% extends 'index.html'%}
+{% block content%}
+<link rel="Stylesheet" href="../static/css/base.css">
+<section>
+    <article>
+    </article>
+    <aside>
+    </aside>
+</section>
+<section>
+    <article>
+    </article>
+    <aside>
+    </aside>
+</section>
 
-        <footer>
-            <p>Miguel Angel Samaniego Calle</p>
-            <p><a href="mailto:msamaniegoc1@est.ups.edu.ec">msamaniegoc1@est.ups.edu.ec</a></p>
-            <p><a href="tel:+593986832324">0986832324</a></p>
-            <p>&copy;Todos los derechos reservados</p>
-        </footer>
-    </body>
-</html>
+{% endblock content%}

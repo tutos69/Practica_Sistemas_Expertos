@@ -16,7 +16,7 @@ dato = 0
 
 @app.route('/')
 def indice():
-    return render_template('Index.html')
+    return render_template('Inicio.html')
 
 
 @app.route('/tutorias')
@@ -68,11 +68,11 @@ def prueba():
 def Estudiantes():
     try:
         if request.method == 'POST':
-            #codigo = request.args.get('codigo', default=-1, type=int)
+            codigo = request.args.get('codigo', default=-1, type=int)
             cedula = request.form.get('cedula', default='999999999',type=str)
-            #nombre = request.form.get('nombre', default='vacio',type=str)
-            #apellido = request.form.get('apellido', default='vacio',type=str)
-            #ciclo = request.form.get('ciclo', default=-1, type=int)
+            nombre = request.form.get('nombre', default='vacio',type=str)
+            apellido = request.form.get('apellido', default='vacio',type=str)
+            ciclo = request.form.get('ciclo', default=-1, type=int)
             #return str(codigo)+ "  " + cedula + "  " + nombre +"  "+ apellido + "  " + str(ciclo)
             tem = envi._facts.find_template('DatosIngresados')
             hecho = tem.assert_fact(cedulas=cedula)
