@@ -1,54 +1,57 @@
 {% extends 'index.html'%}
 {% block content%}
+{% if estado == True %}
 <link rel="Stylesheet" href="../static/css/base.css">
 <link rel="Stylesheet" href="../static/css/formulario.css">
 <section>
-    <form method="POST" action='/estudiantes'>
+    <form method="POST" action='/prueba' estado = true>
         <label> Ingrese los datos del Estudiante para crearlo </label>
         <input class="texto" type="text" name="cedula" id="cedula" placeholder="Ingresa su cedula">
         <label>Ingresa tus Nombre</label>
         <input class="texto" type="text" name="nombres" id="nombres" placeholder="Ingresa sus nombres">
         <label>Ingresa tus Apellidos</label>
         <input class="texto" type="text" name="apellidos" id="apellidos" placeholder="Ingresa sus apellidos">
+        <label>Ingresa tu Ciclo</label>
+        <input class="texto" type="text" name="ciclo" id="ciclo" placeholder="Ingresa tu ciclo">
         <label>Selecciona La materia para dar tutorias</label>
         <select name="materia" id="materia">
-            <option value="">ADMINISTRACION DE LA PRODUCCION</option>
-            <option value="">ADMINISTRACION DE PROYECTOS</option>
-            <option value="">BIOETICA</option>
-            <option value="">BIOGEOGRAFIA ECOLOGICA</option>
-            <option value="">BIOINFORMATICA</option>
-            <option value="">CALCULO DE VARIAS VARIABLES</option>
-            <option value="">CALCULO DIFERENCIAL</option>
-            <option value="">CALCULO ESTRUCTURAL ESTATICO</option>
-            <option value="">CALCULO INTEGRAL</option>
-            <option value="">DINAMICA</option>
+            <option value="1">ADMINISTRACION DE LA PRODUCCION</option>
+            <option value="2">ADMINISTRACION DE PROYECTOS</option>
+            <option value="3">BIOETICA</option>
+            <option value="4">BIOGEOGRAFIA ECOLOGICA</option>
+            <option value="5">BIOINFORMATICA</option>
+            <option value="6">CALCULO DE VARIAS VARIABLES</option>
+            <option value="7">CALCULO DIFERENCIAL</option>
+            <option value="8">CALCULO ESTRUCTURAL ESTATICO</option>
+            <option value="9">CALCULO INTEGRAL</option>
+            <option value="10">DINAMICA</option>
         </select>
         <label>Ingresa tu nota</label>
         <input class="texto" type="text" name="nota" id="nota" placeholder="Ingresa tu nota">
         <label>Te Recomienda Un profesor</label>
         <select name="RecomeProfe" id="RecomeProfe">
-            <option value="">NO</option>
-            <option value="">SI</option>
+            <option value="0">NO</option>
+            <option value="1">SI</option>
         </select>
         <label>Te Recomienda Un Animador</label>
         <select name="RecomeAnima" id="RecomeAnima">
-            <option value="">NO</option>
-            <option value="">SI</option>
+            <option value="0">NO</option>
+            <option value="1">SI</option>
         </select>
         <label>Recomendacion Directa</label>
         <select name="RecomeDirec" id="RecomeDirec">
-            <option value="">NO</option>
-            <option value="">SI</option>
+            <option value="0">NO</option>
+            <option value="1">SI</option>
         </select>
         <label>Te gusta dar clases?</label>
         <select name="DarClase" id="DarClase">
-            <option value="">NO</option>
-            <option value="">SI</option>
+            <option value="0">NO</option>
+            <option value="1">SI</option>
         </select>
         <input class="boton" type="submit" name="submit" id="submit" placeholder="Enviar">
 
     </form>
     <p> {{contador}}</p>
 </section>
-
+{% endif %}
 {% endblock content%}

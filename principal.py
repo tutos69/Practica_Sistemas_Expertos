@@ -10,6 +10,7 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 envi = clips.Environment()
+estado = False
 
 dato = 0
 
@@ -59,34 +60,49 @@ def contacto():
     return render_template('formulario.html')
 
 
-@app.route('/prueba')
+@app.route('/prueba', methods=['GET', 'POST'])
 def prueba():
-    return render_template('prueba.html')
+    if request.method == 'POST':
+        codigo = request.args.get('codigo', default=-1, type=int)
+        cedula = request.form.get('cedula', default='999999999',type=str)
+        nombre = request.form.get('nombre', default='vacio',type=str)
+        apellido = request.form.get('apellido', default='vacio',type=str)
+        ciclo = request.form.get('ciclo', default=-1, type=int)
+        materia = request.form.get('materia',type=int)
+        nota = request.form.get('nota', default=0, type=int)
+        recomeprofe =  request.form.get('RecomeProfe',type=int)
+        recomeAnima =  request.form.get('RecomeAnima',type=int)
+        recomeDirec =  request.form.get('RecomeDirec',type=int)
+        darClase =  request.form.get('DarClase',type=int)
+        #return str(codigo)+ "  " + cedula + "  " + nombre +"  "+ apellido + "  " + str(ciclo)
+        tem = envi._facts.find_template('DatosIngresados')
+        print(codigo,cedula,nombre,apellido)
+        hecho = tem.assert_fact(codigo=codigo,cedulas=cedula,nombre=nombre,apellido=apellido,ciclo=ciclo,materia=materia,Nota=nota,recomeprofe=recomeprofe,recomeAnima=recomeAnima,recomeDirec=recomeDirec,darClase=darClase)
+        envi.run()
+        #print('Holas')
+        for c in envi._facts.facts():
+            #if c.template.name == 'noExisteEstudiante':
+            print(c)
+       # print('holas')
+        #print(materia)
+        return render_template('prueba.html', contador='<h1>hola</h1>')
+    else:    
+        return render_template('prueba.html')
 
 
-@app.route('/estudiantes', methods=['GET', 'POST'])
+@app.route('/estudiantes')
 def Estudiantes():
     try:
-        if request.method == 'POST':
-            codigo = request.args.get('codigo', default=-1, type=int)
-            cedula = request.form.get('cedula', default='999999999',type=str)
-            nombre = request.form.get('nombre', default='vacio',type=str)
-            apellido = request.form.get('apellido', default='vacio',type=str)
-            ciclo = request.form.get('ciclo', default=-1, type=int)
-            #return str(codigo)+ "  " + cedula + "  " + nombre +"  "+ apellido + "  " + str(ciclo)
-            tem = envi._facts.find_template('DatosIngresados')
-            hecho = tem.assert_fact(cedulas=cedula)
-            envi.run()
-            print('Holas')
-            for c in envi._facts.facts():
-                if c.template.name == 'DatosIngresados':
-                    print(c)
-            
-            return render_template('Estudiantes.html', contador='<h1>hola</h1>')
-        else:
+        if estado == False:
+            envi = clips.Environment()
             envi.load('baseConocimiento.clp')
             envi._facts.load_facts('Estudiantes.clp')
-        return render_template('Estudiantes.html', contador=0)
+            envi._facts.load_facts('Materia.clp')
+            return render_template('Estudiantes.html', estado=True)
+        else:
+            print('gola')
+           # envi.reset()
+            return render_template('Estudiantes.html')
     except Exception:
         traceback.print_exc()
 
