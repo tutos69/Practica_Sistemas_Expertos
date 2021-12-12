@@ -70,6 +70,13 @@ def Estudiantes():
         if request.method == 'POST':
             fun()
             return render_template('Estudiantes.html', contador='<h1>hola</h1>')
+            #codigo = request.args.get('codigo', default=-1, type=int)
+            cedula = request.form.get('cedula', default='999999999',type=str)
+            #nombre = request.form.get('nombre', default='vacio',type=str)
+            #apellido = request.form.get('apellido', default='vacio',type=str)
+            #ciclo = request.form.get('ciclo', default=-1, type=int)
+            #return str(codigo)+ "  " + cedula + "  " + nombre +"  "+ apellido + "  " + str(ciclo)
+            
         else:
             envi.load('baseConocimiento.clp')
         return render_template('Estudiantes.html', contador=0)
