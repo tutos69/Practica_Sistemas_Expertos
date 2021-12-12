@@ -66,15 +66,13 @@ def prueba():
 
 @app.route('/estudiantes', methods=['GET', 'POST'])
 def Estudiantes():
-    # m=dato
     try:
-
-        envi.load('baseConocimiento.clp')
         if request.method == 'POST':
+            fun()
             return render_template('Estudiantes.html', contador='<h1>hola</h1>')
-       # else:
+        else:
+            envi.load('baseConocimiento.clp')
         return render_template('Estudiantes.html', contador=0)
-
     except Exception:
         traceback.print_exc()
 
