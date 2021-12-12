@@ -116,6 +116,20 @@
 	)
 )
 
+(deftemplate DatosIngresados
+	(slot cedulas
+		(type STRING)
+		(default ?DERIVE)
+	)
+)
+
+(deftemplate existeEstudiante
+	(slot cedulas
+		(type STRING)
+		(default ?DERIVE)
+	)
+)
+
 (deftemplate materiaTutoria 
 	(slot codigo
 		(type INTEGER)
@@ -280,6 +294,16 @@
 
 
 
+(defrule existetss
+	(DatosIngresados (cedulas ?cxd))
+	(estudiante (cedula ?cx))
+=>
+	(if (= 0 (str-compare ?cx ?cxd)) then
+		(assert (existeEstudiante (cedulas ?cx)))
+	else
+		(printout t "No hay coincidencia" crlf)
+	)
+)
 
 
 

@@ -68,17 +68,24 @@ def prueba():
 def Estudiantes():
     try:
         if request.method == 'POST':
-            fun()
-            return render_template('Estudiantes.html', contador='<h1>hola</h1>')
             #codigo = request.args.get('codigo', default=-1, type=int)
             cedula = request.form.get('cedula', default='999999999',type=str)
             #nombre = request.form.get('nombre', default='vacio',type=str)
             #apellido = request.form.get('apellido', default='vacio',type=str)
             #ciclo = request.form.get('ciclo', default=-1, type=int)
             #return str(codigo)+ "  " + cedula + "  " + nombre +"  "+ apellido + "  " + str(ciclo)
+            tem = envi._facts.find_template('DatosIngresados')
+            hecho = tem.assert_fact(cedulas=cedula)
+            envi.run()
+            print('Holas')
+            for c in envi._facts.facts():
+                if c.template.name == 'DatosIngresados':
+                    print(c)
             
+            return render_template('Estudiantes.html', contador='<h1>hola</h1>')
         else:
             envi.load('baseConocimiento.clp')
+            envi._facts.load_facts('Estudiantes.clp')
         return render_template('Estudiantes.html', contador=0)
     except Exception:
         traceback.print_exc()
@@ -86,8 +93,6 @@ def Estudiantes():
     # return render_template('Estudiantes.html')
 
 
-def fun():
-    print('hola')
 
 
 app.run(debug=True, port=8000)
